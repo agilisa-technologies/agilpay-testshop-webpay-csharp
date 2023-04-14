@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html lang="es"
+      class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> - Agilisa Technologies</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/site.css" />
+
+    <link href="../../css/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        input[type=text],
+        select,
+        label {
+            text-align: left;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container body-content">
+        <div class="wrapper">
+            <div class="col-md-12">
+                <div class="container-info">
+                    <form action="/ShoppingCart/Register_EN" class="form-horizontal"
+                          form="EntryPoint" id="EntryPoint" method="post">
+                        <!-- ?culture=en -->
+                        <input name="Authentication" id="Authentication" class="form-control" type="hidden">
+                        <h3>Register Test</h3>
+                        <hr>
+                        <h4>
+                            General Information
+                        </h4>
+                        <div class="panel-body">
+
+                            <div class="form-horizontal">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label class="control-label">SiteID</label>
+                                        <div>
+                                            <input id="SiteID" name="SiteID" class="form-control" type="text" value="8b0b8cf1eb402ew7a89">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="control-label">Llave</label>
+                                        <div>
+                                            <input type="text" id="Key" ,="" name="Key" required class="form-control" value="AgilisaTechnologies">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="control-label" for="UserID">UserID</label>
+                                        <div>
+                                            <input name="UserID" id="UserID" type="text" value="User-47748" class="form-control text-box single-line"
+                                                   data-val="true" data-val-length="The field UserID must be a string with a maximum length of 50." data-val-length-max="50" data-val-required="The UserID field is required.">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="UserID" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <label class="control-label" for="Names">Names</label>
+                                        <div>
+                                            <input name="Names" type="text" value="Johm Smith" class="form-control text-box single-line"
+                                                   data-val="true" data-val-length="The field Names must be a string with a maximum length of 120." data-val-length-max="120" data-val-required="The Nombres field is required." id="Nombres">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="Names" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="control-label" for="EMail">EMail</label>
+                                        <div>
+                                            <input id="EMail" name="EMail" type="text" value="j.smith@gmail.com" class="form-control text-box single-line"
+                                                   data-val="true" data-val-required="The EMail field is required.">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="EMail" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <label class="control-label"
+                                               for="Identification">Identification</label>
+                                        <div>
+                                            <input id="Identification" name="Identification" type="text" value="00520201129" class="form-control text-box single-line"
+                                                   data-val="true" data-val-length="The field Identificacion must be a string with a maximum length of 50." data-val-length-max="50" data-val-required="The Identificacion field is required.">
+                                            <span class="field-validation-valid text-danger"
+                                                  data-valmsg-for="Identification" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="control-label" for="ReturnURL">ReturnURL</label>
+                                        <div>
+                                            <input name="ReturnURL" type="text" value="https://stage.agilpay.net/WebPay/content/mock/register.html" class="form-control text-box single-line"
+                                                   data-val="true" data-val-length="The field UrlRetorno must be a string with a maximum length of 200." data-val-length-max="200" data-val-required="The UrlRetorno field is required." id="UrlRetorno">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="ReturnURL" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <label class="control-label"
+                                               for="URLNotification">URLNotification</label>
+                                        <div>
+                                            <input id="SuccessURL" name="SuccessURL" type="text" value="https://stage.agilpay.net/WebPay/ShoppingCart/SuccessOrder" class="form-control text-box single-line"
+                                                   data-val="true" data-val-length="The field URLNotification must be a string with a maximum length of 200." data-val-length-max="200">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="SuccessURL" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="control-label" for="Detail">Detail</label>
+                                        <div class="col-md-12 p-0">
+                                            <textarea name="Detail" rows="10" id="Detail" class="col-12">&lt;Detail&gt;
+  &lt;Payment MerchantKey="MTk2MjA2ODE5NA==" Service="Order-1234" MerchantName="Business Services" Description="Agreements for new consulting services" Amount="40.50" Tax="10.5" Currency="840" UseRecurring="1" RecurringPeriod="3" RecurringFrequency="1" RecurringDay="15"  RecurringQty="6" RecurringAmount="35.22" RecurringFromDate="2020-06-01" RecurringToDate="2025-08-30"&gt;
+  &lt;/Payment&gt;
+  &lt;/Detail&gt;</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Send Shopping Cart" class="btn btn-primary btn-sm">
+                                    <a class="btn btn-info btn-sm" href="" onclick="javascript:window.location.reload(true);">Reset</a>
+                                    <select id="NoHeader" name="NoHeader">
+                                        <option value="0">Use Full Page</option>
+                                        <option value="1">Use IFRAME</option>
+                                    </select>
+                                    <select id="language" name="language">
+                                        <option value="en">English</option>
+                                        <option value="es">Spanish</option>
+                                    </select>
+                                    <a href="test_page.html">Payment test page</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 result-frame" style="display: none;">
+            <h1>Resulting IFrame</h1>
+            <iframe name="agilpay_frame" style="width: 100%; height: 1000px; border: 1px dotted #ccc; overflow: hidden;" scrolling="no"></iframe>
+
+        </div>
+    </div>
+
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(
+            function () {
+                $("#EntryPoint").on('submit', GenerateKey);
+            }
+        )
+
+        // this should be done on server because #Key is a secret value
+        function GenerateKey(event) {
+            event.preventDefault();
+
+            var pathName = window.location.pathname === "/" ? "" : window.location.pathname;
+            var aux = pathName.charAt(pathName.length - 1) === "/" ? pathName.slice(0, -1) : pathName;
+            var url = `${window.location.origin}/api/Hash`;
+
+            $('[type="submit"]', '#EntryPoint').attr('disabled', true);
+            $.ajax(url, {
+                method: 'POST',
+                data: { V5: 'true', SiteID: $('#SiteID').val(), UserID: $('#UserID').val(), Identification: $('#Identification').val(), Detail: $('#Detail').val() },
+                dataType: 'json',
+                success: function (hash) {
+                    checkIFrameUse();
+                    $('#Authentication').val(hash);
+                    $("#EntryPoint").off('submit', GenerateKey);
+                    $('#EntryPoint').submit()
+                },
+                error: function (message) {
+                    console.log(message);
+                    $('[type="submit"]', '#EntryPoint').attr('disabled', false);
+                }
+            });
+        }
+
+        function checkIFrameUse() {
+            // if use IFRAME
+            if ($("#NoHeader").val() == '1') {
+                $(".container-info").hide();
+                $(".result-frame").show();
+                $("#EntryPoint").attr("target", "agilpay_frame");
+            }
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>

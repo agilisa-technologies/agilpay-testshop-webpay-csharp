@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html lang="es"
+      class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> - Agilisa Technologies</title>
+    <link href="http://vmdataprueba.cloudapp.net/WebPay5/Content/bootstrap.css" rel="stylesheet">
+    <link href="http://vmdataprueba.cloudapp.net/WebPay5/Content/site.css" rel="stylesheet">
+
+    <script src="http://vmdataprueba.cloudapp.net/WebPay5/Scripts/modernizr-2.8.3.js"></script>
+
+
+    <link href="http://vmdataprueba.cloudapp.net/WebPay5/Content/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        input[type=text],
+        select,
+        label {
+            text-align: left;
+        }
+
+        .wrapper {
+            border: 0;
+            padding: 10px;
+            box-shadow: 0 0 30px #ccc;
+            margin: 20px 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container body-content">
+        <div class="wrapper">
+
+
+            <div class="col-md-12">
+                <div class="container-info">
+
+                    <form action="http://vmdataprueba.cloudapp.net/WebPay5/ShoppingCart/Payment" class="form-horizontal" autocomplete="off"
+                          form="EntryPoint" id="EntryPoint" method="post">
+
+                        <input name="Autenticacion" id="Autenticacion" class="form-control" type="hidden">
+                        <h3>Ministerios de Cristo</h3>
+                        <hr>
+                        <div class="panel panel-primary">
+                            <h4>Donate</h4>
+
+                            <div class="form-horizontal">
+                                <div class="row d-none">
+                                    <div class="col-6">
+                                        <label class="control-label" for="SiteID">SiteID</label>
+                                        <div>
+                                            <input name="SiteID" class="form-control" type="text" value="8b0b8cf1eb402ew7a89">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="control-label">Llave</label>
+                                        <div>
+                                            <input type="text" id="Key" ,="" name="Key" required class="form-control" value="AgilisaTechnologies">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col d-none">
+                                        <label class="control-label" for="IDUsuario">IDUsuario</label>
+                                        <div>
+                                            <input name="IDUsuario" type="text" value="" class="form-control text-box single-line"
+                                                   data-val="true" data-val-length="" data-val-length-max="50" data-val-required="The IDUsuario field is required." id="IDUsuario">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="IDUsuario" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <label class="control-label" for="Nombres">First Name / Last Name</label>
+                                        <div>
+                                            <input name="Nombres" type="text" value="" class="form-control text-box single-line" required
+                                                   data-val="true" data-val-length="The field Nombres must be a string with a maximum length of 120." data-val-length-max="120" data-val-required="The Nombres field is required." id="Nombres">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="Nombres" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="control-label" for="EMail">Email</label>
+                                        <div>
+                                            <input id="EMail" name="EMail" type="text" value="" class="form-control text-box single-line" required
+                                                   data-val="true" data-val-required="The EMail field is required.">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="EMail" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col d-none">
+                                        <label class="control-label"
+                                               for="Identificacion">Identification</label>
+                                        <div>
+                                            <input id="Identificacion" name="Identificacion" type="text" value="" class="form-control text-box single-line" required
+                                                   data-val="true" data-val-length="The field Identificacion must be a string with a maximum length of 50." data-val-length-max="50" data-val-required="The Identificacion field is required.">
+                                            <span class="field-validation-valid text-danger"
+                                                  data-valmsg-for="Identificacion" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row d-none">
+                                    <div class="col">
+                                        <label class="control-label" for="UrlRetorno">UrlRetorno</label>
+                                        <div>
+                                            <input name="UrlRetorno" type="text" value="http://localhost/ShoppingCart/TestPayment" class="form-control text-box single-line"
+                                                   data-val="true" data-val-length="The field UrlRetorno must be a string with a maximum length of 200." data-val-length-max="200" data-val-required="The UrlRetorno field is required." id="UrlRetorno">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="UrlRetorno" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <label class="control-label"
+                                               for="URLNotification">URLNotification</label>
+                                        <div>
+                                            <input id="URLNotification" name="URLNotification" type="text" value="http://localhost/ShoppingCart/SuccessOrder" class="form-control text-box single-line"
+                                                   data-val="true" data-val-length="The field URLNotification must be a string with a maximum length of 200." data-val-length-max="200">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="URLNotification" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row d-none">
+                                    <div class="col">
+                                        <label class="control-label" for="Detalle">Detalle</label>
+                                        <div class="col-md-12 p-0">
+                                            <textarea name="Detalle" rows="10" id="Detalle" class="col-12"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="control-label" for="monto">Donation Amount</label>
+                                        <div>
+                                            <input id="monto" name="monto" type="number" value="100" class="form-control text-box single-line" min="1" step="1" required
+                                                   data-val="true" data-val- data-val-length-max="50" data-val-required="The Amount field is required.">
+                                            <span class="field-validation-valid text-danger"
+                                                  data-valmsg-for="monto" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="control-label" for="Detalle">Your message</label>
+                                        <div class="col-md-12 p-0">
+                                            <textarea name="Mensaje" rows="3" id="Mensaje" class="col-12"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <hr />
+                                    <input type="submit" value="Submit" class="btn btn-primary">
+                                    <a class="btn btn-info" href="" onclick="javascript:window.location.reload(true);">Reset</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-12 result-frame" style="display: none;">
+                <h1>Resulting Frame</h1>
+                <iframe name="agilpay_frame" style="width: 100%; height: 1000px; border: 1px dotted #ccc; overflow: hidden;" scrolling="no"></iframe>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="http://vmdataprueba.cloudapp.net/WebPay5/scripts/jquery-3.3.1.js"></script>
+
+    <script src="http://vmdataprueba.cloudapp.net/WebPay5/scripts/bootstrap.js"></script>
+    <script src="http://vmdataprueba.cloudapp.net/WebPay5/scripts/respond.js"></script>
+
+
+    <script>
+        var detalleXml = '<Detalle><Pago MerchantKey="MTQ5OTY2NjQ3Mg==" Servicio="Donacion-1" Empresa="Ministerios de Cristo" Descripcion="{1}" Monto="{0}" Impuesto="0" Moneda="840"></Pago></Detalle>';
+
+        $(
+            function () {
+                $("#EntryPoint").on('submit', GenerateKey);
+                $("#monto, #Mensaje").blur(function () {
+                    updateDetalle();
+                });
+
+                $("#EMail").blur(function () {
+                    $("#IDUsuario").val($(this).val());
+                    $("#Identificacion").val($(this).val());
+                });
+
+            }
+        )
+
+        // this should be done on server because #Key is a secret value
+        function GenerateKey(event) {
+            event.preventDefault();
+
+            $('[type="submit"]', '#EntryPoint').attr('disabled', true);
+            $.ajax('http://vmdataprueba.cloudapp.net/WebPay5/Cards/GenerateKeyToShopping', {
+                method: 'POST',
+                data: { Key: $('#Key').val(), UserID: $('#IDUsuario').val(), Identificacion: $('#Identificacion').val(), Detalle: $('#Detalle').val() },
+                dataType: 'json',
+                success: function (hash) {
+                    checkIFrameUse();
+                    $('#Autenticacion').val(hash);
+                    $("#EntryPoint").off('submit', GenerateKey);
+                    $('#EntryPoint').submit()
+                },
+                error: function (message) {
+                    console.log(message);
+                    $('[type="submit"]', '#EntryPoint').attr('disabled', false);
+                }
+            });
+        }
+
+        function checkIFrameUse() {
+            // if use IFRAME
+            if ($("#NoHeader").val() == '1') {
+                $(".container-info").hide();
+                $(".result-frame").show();
+                $("#EntryPoint").attr("target", "agilpay_frame");
+            }
+        }
+
+        function updateDetalle() {
+            var monto = $("#monto").val();
+            var mensaje = $("#Mensaje").val();
+            var detalle = detalleXml.format(monto, mensaje)
+            $("#Detalle").val(detalle);
+        }
+
+        String.prototype.format = function () {
+            /// <summary>Formatea un string pasando argumentos</summary>
+            /// <param name="template" type="String">
+            ///     Template a utilizar {n}
+            /// </param>
+            /// <param name="valores" type="Object">
+            ///     Valores a utilizar
+            /// </param>
+            /// <returns type="String" />
+
+            // usage: String.format("prueba: {0}", 123)
+            var args = arguments;
+            return this.replace(/\{(\d+)\}/g, function (m, n) { return args[n]; });
+        };
+    </script>
+
+
+
+
+</body>
+
+</html>

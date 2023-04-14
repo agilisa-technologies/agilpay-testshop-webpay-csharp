@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Payment - AgilPay</title>
+
+	<script src="https://codesandbox.io/static/browserfs9/browserfs.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+	<script src="https://kit.fontawesome.com/db5b02ceb1.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+	<style>
+		.border-black {
+			border: 1px solid #6b6b6b;
+		}
+
+		.bg-blue {
+			background-color: #e6f7f9;
+			color: #000000;
+		}
+
+		.generic_title {
+			color: #0077c0;
+			font-family: Arial;
+			font-size: 34px;
+			margin-bottom: 0;
+		}
+
+		.border_bottom {
+			border-top: double #ccc;
+			float: left;
+			text-indent: -99999px;
+			width: 100%;
+			height: 20px;
+			display: none;
+		}
+
+		h5 {
+			border-bottom: double #ccc;
+			margin-top: 10px;
+		}
+
+		button:focus {
+			background: #0275d8;
+			color: white;
+			content: 'Selected';
+		}
+
+
+		.cardCollapse:hover {
+			background: rgb(51, 177, 255);
+			color: #33b1ff;
+			box-shadow: inset 0 0 0 3px #33b1ff;
+		}
+
+		/**********************************************
+			CHECK SWITCH
+		*/
+
+		/* The switch - the box around the slider */
+		.switch {
+			position: relative;
+			display: inline-block;
+			width: 60px;
+			height: 34px;
+		}
+
+			/* Hide default HTML checkbox */
+			.switch input {
+				opacity: 0;
+				width: 0;
+				height: 0;
+			}
+
+		/* The slider */
+		.slider {
+			position: absolute;
+			cursor: pointer;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: #ccc;
+			-webkit-transition: 0.4s;
+			transition: 0.4s;
+		}
+
+			.slider:before {
+				position: absolute;
+				content: "";
+				height: 26px;
+				width: 26px;
+				left: 4px;
+				bottom: 4px;
+				background-color: white;
+				-webkit-transition: 0.4s;
+				transition: 0.4s;
+			}
+
+		input:checked + .slider {
+			background-color: #0056b8;
+		}
+
+		input:focus + .slider {
+			box-shadow: 0 0 1px #0056b8;
+		}
+
+		input:checked + .slider:before {
+			-webkit-transform: translateX(26px);
+			-ms-transform: translateX(26px);
+			transform: translateX(26px);
+		}
+
+		/* Rounded sliders */
+		.slider.round {
+			border-radius: 34px;
+		}
+
+			.slider.round:before {
+				border-radius: 50%;
+			}
+
+		.rccs.selected .selector {
+			color: green;
+			position: relative;
+			left: 0%;
+			font-size: 50pt;
+			top: 30%;
+			z-index: 10;
+		}
+
+		form {
+			width: 100%;
+		}
+
+		/*css process modal -  processing-modal*/
+		.modal-static {
+			position: fixed;
+			top: 50% !important;
+			left: 50% !important;
+			margin-top: -100px;
+			margin-left: -150px;
+			overflow: visible !important;
+		}
+
+			.modal-static,
+			.modal-static .modal-dialog,
+			.modal-static .modal-content {
+				width: 0px;
+				height: 0px;
+			}
+
+				.modal-static .modal-dialog,
+				.modal-static .modal-content {
+					padding: 0 !important;
+					margin: 0 !important;
+				}
+
+					.modal-static .modal-content .icon {
+					}
+
+		.modal-text {
+			text-align: center;
+			font-family: Cambria;
+			font-weight: bold;
+			font-size: medium;
+		}
+	</style>
+
+	<link href="~/V5/Content/cards.css" rel="stylesheet" />
+	<link href="~/V5/Content/cards2.css" rel="stylesheet" />
+
+
+
+</head>
+<body class="">
+
+	@RenderBody()
+
+	@RenderSection("Scripts", required: false)
+
+</body>
+</html>

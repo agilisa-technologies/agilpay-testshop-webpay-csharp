@@ -1,0 +1,125 @@
+﻿html, body {
+	height: 100%;
+	width: 100%;
+}
+
+
+.rounded-top-lg {
+	border-top-left-radius: 0.7rem !important;
+	border-top-right-radius: 0.7rem !important;
+}
+
+.rounded-bottom-lg {
+	border-bottom-right-radius: 0.7rem !important;
+	border-bottom-left-radius: 0.7rem !important;
+}
+
+.rounded-left-lg {
+	border-bottom-left-radius: 0.7rem !important;
+}
+
+.rounded-right-lg {
+	border-bottom-right-radius: 0.7rem !important;
+}
+
+.rounded-top-left-lg {
+	border-top-left-radius: 0.7rem !important;
+}
+
+.rounded-top-right-lg {
+	border-top-right-radius: 0.7rem !important;
+}
+
+.removecaret {
+	white-space: normal !important;
+}
+
+	.removecaret.dropdown-toggle::after {
+		display: none;
+	}
+
+.ccicon {
+	height: 35px;
+	position: absolute;
+	right: 6px;
+	top: calc(50% - 17px);
+	width: 60px;
+}
+
+.removeborder.form-control:focus {
+	border: none !important;
+	box-shadow: none !important;
+}
+
+.custom-checkbox .custom-control-label::before {
+	border-radius: 0.50rem;
+}
+
+.custom-control-label::before,
+.custom-control-label::after {
+	top: 0rem;
+	left: -2.5rem;
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.text-shadow {
+	text-shadow: 1px 2px 3px var(--gray);
+}
+
+.h-85 {
+	height: 80% !important;
+}
+
+.h-15 {
+	height: 20% !important;
+}
+
+.title-font {
+	font-size: 2rem;
+}
+
+@media only screen and (max-height: 850px) {
+	.h-85 {
+		height: 75% !important;
+	}
+
+	.h-15 {
+		/*margin-bottom: 20px !important;*/
+		min-height: 12% !important;
+		height: auto !important;
+	}
+
+	.title-font {
+		font-size: 1.25rem;
+	}
+}
+
+
+@media only screen and (max-width: 768px) {
+
+	.h-85 {
+		height: 75% !important;
+	}
+
+	.h-15 {
+		min-height: 12% !important;
+		height: auto !important;
+	}
+
+	.title-font {
+		font-size: 1.25rem;
+	}
+}
+
+input[type=radio] {
+	transform: scale(1.5);
+}
+
+.shadow-cotainer {
+	/*box-shadow: -6px -11px 4px -13px var(--gray);*/
+}
+.payment-pane {
+	background-color: white;
+	border-radius: 10px;
+}

@@ -1,0 +1,49 @@
+﻿@page
+@using Microsoft.AspNetCore.Localization;
+@using Microsoft.AspNetCore.Mvc.Localization;
+@using Microsoft.Extensions.Localization;
+@model SuccessModel
+@inject IStringLocalizer<SuccessModel> localizer
+@inject IHtmlLocalizer<SuccessModel> htmlLocalizer
+@{
+    Layout = "_emptyLayout";
+}
+<div class="row h-100">
+    <div class="col-12 d-flex flex-column mt-auto">
+        <img class="rounded mx-auto m-auto" src="~/img/success.svg" style="max-height: 200px;" />
+    </div>
+
+    <div class="col-12 text-center">
+        <p class="h3 text-success">@htmlLocalizer["Success"]</p>
+    </div>
+
+    <div class="col-12 text-center mb-auto">
+        <div class="form-group">
+            <label for="result h3">@htmlLocalizer["Result"]</label>
+            <textarea class="form-control" id="result" rows="25">@Html.Raw(Model.ResponseFormC)</textarea>
+        </div>
+        <div>
+            <label for="result h3">@Html.Raw(Model.ResponseType)</label>
+            <label for="result h3">@Html.Raw(Model.Authentication)</label>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        (function () {
+            function prettyPrint() {
+                var ugly = document.getElementById('result').value;
+                var obj = JSON.parse(ugly);
+                var pretty = JSON.stringify(obj, undefined, 4);
+                document.getElementById('result').value = pretty;
+            }
+            prettyPrint();
+        })();
+
+        function mobile_callback() {
+            var result = document.getElementById('result').value;
+            return result;
+        }
+    </script>
+}
