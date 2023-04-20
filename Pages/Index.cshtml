@@ -10,9 +10,6 @@
     ViewData["Title"] = "Home page";
     var url = Url.PageLink("Success");
     var urlBack = Url.PageLink("Index");
-
-    @*var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
-    var requestCulture = requestCultureFeature.RequestCulture;*@
     var culture = System.Globalization.CultureInfo.CurrentCulture;
 }
 <link href="~/lib/color-picker/color-picker.min.css" rel="stylesheet">
@@ -34,226 +31,194 @@
         background-color: #f16824 !important;
     }
 </style>
-<input id="webApiUrl" value="@Model.ApaymentWebApiUrl" type="hidden" />
-<input id="webPayUrl" value="@Model.ApaymentWebPayUrl" type="hidden" />
+<input id="webPayUrl" value="@Model.Agilpay_WebPayUrl" type="hidden" />
 <div class="navbar navbar-dark bg-primary"></div>
 <div class="container body-content">
-    @if (Model.ShowTestPage)
-    {
-        <div class="wrapper row">
-            <div class="col-md-7">
-                <div class="container-info">
+    <div class="wrapper row">
+        <div class="col-md-7">
+            <div class="container-info">
 
-                    <form form="EntryPoint" id="EntryPoint" method="post">
+                <form form="EntryPoint" id="EntryPoint" method="post">
 
-                        <input name="Authentication" id="Authentication" class="form-control" type="hidden" />
-                        <h3 class="mt-5">
-                            @htmlLocalizer["ShoppingCart"]
-                        </h3>
-                        <hr>
+                    <h3 class="mt-5">
+                        @htmlLocalizer["ShoppingCart"]
+                    </h3>
+                    <hr>
 
-                        <h4>
-                            @htmlLocalizer["Information"]
-                        </h4>
+                    <h4>
+                        @htmlLocalizer["Information"]
+                    </h4>
 
-                        <div class="form-row">
-                            <div class="col-6">
-                                <label class="control-label" for="SiteID">Client_id</label>
-                                <input id="SiteID" name="SiteID" class="form-control" type="text" value="API-001" />
-                            </div>
-                            <div class="col-6">
-                                <label class="control-label">Client_Secret</label>
-                                <input id="Key" name="Key" class="form-control" type="text" value="Dynapay" />
-                            </div>
-                            <div class="col-6">
-                                <label class="control-label" for="UserID">UserID</label>
-                                <input name="UserID" id="UserID" type="text" value="User-47748" class="form-control text-box single-line"
-                                       data-val="true" data-val-length="El campo IDUsuario debe contener 50 o menos caracteres" data-val-length-max="50" data-val-required="The UserID field is required." />
-                                <span class="field-validation-valid text-danger" data-valmsg-for="UserID" data-valmsg-replace="true"></span>
-                            </div>
-                            <div class="col-6">
-                                <label class="control-label" for="Names">Names</label>
-                                <input name="Names" type="text" value="Johm Smith" class="form-control text-box single-line"
-                                       data-val="true" data-val-length="The field Names must be a string with a maximum length of 120." data-val-length-max="120" data-val-required="The Nombres field is required." id="Nombres" />
-                                <span class="field-validation-valid text-danger" data-valmsg-for="Names" data-valmsg-replace="true"></span>
-                            </div>
-
-                            <div class="col-6">
-                                <label class="control-label" for="Email">Email</label>
-                                <input id="Email" name="Email" type="text" value="j.smith@gmail.com" class="form-control text-box single-line"
-                                       data-val="true" data-val-required="The Email field is required." />
-                                <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
-                            </div>
-
-                            <div class="col-6">
-                                <label class="control-label" for="PhoneNumber">PhoneNumber</label>
-                                <input id="PhoneNumber" name="PhoneNumber" type="text" value="8293244777" class="form-control text-box single-line" />
-
-                            </div>
-
-                            <div class="col-6">
-                                <label class="control-label" for="Identification">Identification</label>
-                                <input id="Identification" name="Identification" type="text" value="00520201129" class="form-control text-box single-line"
-                                       data-val="true" data-val-length="The field Identificacion must be a string with a maximum length of 50." data-val-length-max="50" data-val-required="The Identificacion field is required." />
-                                <span class="field-validation-valid text-danger"
-                                      data-valmsg-for="Identification" data-valmsg-replace="true"></span>
-                            </div>
-
-                            <div class="col">
-                                <label class="control-label" for="ReturnURL">ReturnURL (back)</label>
-                                <input name="ReturnURL" type="text" value="@urlBack" class="form-control text-box single-line"
-                                       data-val="true" data-val-length="The field ReturnURL must be a string with a maximum length of 200." data-val-length-max="200" data-val-required="The ReturnURL field is required." id="ReturnURL" />
-                                <span class="field-validation-valid text-danger" data-valmsg-for="ReturnURL" data-valmsg-replace="true"></span>
-                            </div>
-                            <div class="col-6">
-                                <label class="control-label"
-                                       for="SuccessURL">SuccessURL</label>
-                                <input id="SuccessURL" name="SuccessURL" type="text" value="@url" class="form-control text-box single-line"
-                                       data-val="true" data-val-length="The field SuccessURL must be a string with a maximum length of 200." data-val-length-max="200" />
-                                <span class="field-validation-valid text-danger" data-valmsg-for="SuccessURL" data-valmsg-replace="true"></span>
-                            </div>
+                    <div class="form-row">
+                        <div class="col-6">
+                            <label class="control-label" for="SiteID">Client_id</label>
+                            <input id="SiteID" name="SiteID" class="form-control" type="text" value="API-001" />
                         </div>
-                        <div class="form-row">
-                            <div class="col-12">
-                                <label class="control-label" for="Detail">@htmlLocalizer["Detail"]</label>
-                                <textarea name="Detail" rows="4" id="Detail" class="form-control">{&quot;Payments&quot;:[{&quot;Items&quot;:[{&quot;Description&quot;:&quot;Service Invoice 122233&quot;,&quot;Quantity&quot;:&quot;1&quot;,&quot;Amount&quot;:100,&quot;Tax&quot;:0}],&quot;MerchantKey&quot;:&quot;TEST-001&quot;,&quot;Service&quot;:&quot;TBW9CVl7&quot;,&quot;MerchantName&quot;:&quot;Test Store&quot;,&quot;Description&quot;:&quot;Service Invoice 12233&quot;,&quot;Amount&quot;:123.55,&quot;Tax&quot;:0,&quot;Currency&quot;:&quot;840&quot;}]}</textarea>
-                            </div>
+                        <div class="col-6">
+                            <label class="control-label" for="UserID">UserID</label>
+                            <input name="UserID" id="UserID" type="text" value="User-47748" class="form-control text-box single-line"
+                                   data-val="true" data-val-length="El campo IDUsuario debe contener 50 o menos caracteres" data-val-length-max="50" data-val-required="The UserID field is required." />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="UserID" data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="col-6">
+                            <label class="control-label" for="Names">Names</label>
+                            <input name="Names" type="text" value="Johm Smith" class="form-control text-box single-line"
+                                   data-val="true" data-val-length="The field Names must be a string with a maximum length of 120." data-val-length-max="120" data-val-required="The Nombres field is required." id="Nombres" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="Names" data-valmsg-replace="true"></span>
                         </div>
 
-
-                        <div class="form-row m-1 mb-2" style="font-size: 0.9em">
-                            <div class="col-12 mb-2">
-                                <h5>Options</h5>
-                            </div>
-                            <div class="row col-12 mb-3">
-                                <div class="col-4">
-                                    <label class="control-label" for="NoHeader">@htmlLocalizer["Display"]</label>
-                                    <select id="NoHeader" name="NoHeader" class="form-control">
-                                        <option value="0" selected>Full Page</option>
-                                        <option value="1">IFRAME</option>
-                                    </select>
-                                </div>
-                                <div class="col-4">
-                                    <label class="control-label" for="BodyBackground">Background color Hex</label>
-                                    <input class="form-control" type="text" id="BodyBackground" name="BodyBackground" value="#f8f9fa">
-                                </div>
-                                <div class="col-4">
-                                    <label class="control-label" for="PrimaryColor">Primary Color Hex</label>
-                                    <input class="form-control" type="text" id="PrimaryColor" name="PrimaryColor" value="#007bff">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <label class="control-label">Disable Credit Card</label>
-                                <input type="checkbox" name="Tc" value="false">
-                            </div>
-                            <div class="col-4">
-                                <label class="control-label">Disable Ach</label>
-                                <input type="checkbox" name="Ach" value="false">
-                            </div>
-                            <div class="col-4">
-                                <label class="control-label">Disable Boton Popular</label>
-                                <input type="checkbox" name="BtnPopular" value="false">
-                            </div>
-                            <div class="col-4">
-                                <label class="control-label">Disable Boton Bhd</label>
-                                <input type="checkbox" name="BtnBhd" value="false">
-                            </div>
-                            <div class="col-4">
-                                <label class="control-label">Disable Wallet</label>
-                                <input type="checkbox" name="ShowWallet" value="false">
-                            </div>
-                            <div class="col-4">
-                                <label class="control-label">Disable Payment Options</label>
-                                <input type="checkbox" name="ShowPaymentOptions" value="false">
-                            </div>
-                            <div class="col-6">
-                                <label>Requires Customer Address</label>
-                                <input type="checkbox" name="RequiresAddress" value="true" />
-                            </div>
-                        </div>
-                        <div class="form-row mt-3">
-                            <div class="col-offset-2 col-12">
-
-                                <input class="btn btn-sm btn-info" type="submit" id="PaymentBtn" value="Send Payment" asp-asp-page="@Model.ApaymentWebPayUrl + '/Payment'" formmethod="post" asp-route-culture="@culture.Name" />
-                                <input class="btn btn-sm btn-info" type="submit" Id="RegisterBtn" value="Register Card" formmethod="post"  />
-                                <input class="btn btn-sm btn-info" type="submit" Id="JwtBtn" value="Check Jwt" />
-                                <a class="btn btn-sm btn-warning" asp-page="index" asp-route-culture="es-US">@htmlLocalizer["Spanish"] es-US</a>
-                                <a class="btn btn-sm btn-warning" asp-page="index" asp-route-culture="en-US">@htmlLocalizer["English"] en-US</a>
-                            </div>
-                        </div>
-                        <div>
-                            <label>OAuth JWT token</label>
-                            <textarea id="token" name="token" rows="4" class="form-control"></textarea>
+                        <div class="col-6">
+                            <label class="control-label" for="Email">Email</label>
+                            <input id="Email" name="Email" type="text" value="j.smith@gmail.com" class="form-control text-box single-line"
+                                   data-val="true" data-val-required="The Email field is required." />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
                         </div>
 
+                        <div class="col-6">
+                            <label class="control-label" for="PhoneNumber">PhoneNumber</label>
+                            <input id="PhoneNumber" name="PhoneNumber" type="text" value="8293244777" class="form-control text-box single-line" />
 
+                        </div>
 
-                    </form>
-                    <form id="errorForm" asp-page="/Index" asp-route-culture="@culture.Name" method="post">
-                    </form>
+                        <div class="col-6">
+                            <label class="control-label" for="Identification">Identification</label>
+                            <input id="Identification" name="Identification" type="text" value="00520201129" class="form-control text-box single-line"
+                                   data-val="true" data-val-length="The field Identificacion must be a string with a maximum length of 50." data-val-length-max="50" data-val-required="The Identificacion field is required." />
+                            <span class="field-validation-valid text-danger"
+                                  data-valmsg-for="Identification" data-valmsg-replace="true"></span>
+                        </div>
 
-                    <div class="text-left row border rounded border-secondary mt-5">
                         <div class="col">
-                            <p class="my-2">
-                                @htmlLocalizer["Culture"] : @culture.DisplayName {@culture.Name}
-                            </p>
-                            <p class="my-2">
-                                @htmlLocalizer["Date"] : @DateTime.Now.ToLongDateString()
-                            </p>
+                            <label class="control-label" for="ReturnURL">ReturnURL (back)</label>
+                            <input name="ReturnURL" type="text" value="@urlBack" class="form-control text-box single-line"
+                                   data-val="true" data-val-length="The field ReturnURL must be a string with a maximum length of 200." data-val-length-max="200" data-val-required="The ReturnURL field is required." id="ReturnURL" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="ReturnURL" data-valmsg-replace="true"></span>
                         </div>
-                        <div class="col">
-                            <p class="my-2">
-                                @htmlLocalizer["Currency"]	: @(12345.00.ToString("c"))
-                            </p>
-                            <p class="my-2">
-                                @htmlLocalizer["Number"] : @(123.45m.ToString("F2"))
-                            </p>
+                        <div class="col-6">
+                            <label class="control-label"
+                                   for="SuccessURL">SuccessURL</label>
+                            <input id="SuccessURL" name="SuccessURL" type="text" value="@url" class="form-control text-box single-line"
+                                   data-val="true" data-val-length="The field SuccessURL must be a string with a maximum length of 200." data-val-length-max="200" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="SuccessURL" data-valmsg-replace="true"></span>
                         </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-12">
+                            <label class="control-label" for="Detail">@htmlLocalizer["Detail"]</label>
+                            <textarea name="Detail" rows="4" id="Detail" class="form-control">{&quot;Payments&quot;:[{&quot;Items&quot;:[{&quot;Description&quot;:&quot;Service Invoice 122233&quot;,&quot;Quantity&quot;:&quot;1&quot;,&quot;Amount&quot;:100,&quot;Tax&quot;:0}],&quot;MerchantKey&quot;:&quot;TEST-001&quot;,&quot;Service&quot;:&quot;TBW9CVl7&quot;,&quot;MerchantName&quot;:&quot;Test Store&quot;,&quot;Description&quot;:&quot;Service Invoice 12233&quot;,&quot;Amount&quot;:123.55,&quot;Tax&quot;:0,&quot;Currency&quot;:&quot;840&quot;}]}</textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="form-row m-1 mb-2" style="font-size: 0.9em">
+                        <div class="col-12 mb-2">
+                            <h5>Options</h5>
+                        </div>
+                        <div class="row col-12 mb-3">
+                            <div class="col-4">
+                                <label class="control-label" for="NoHeader">@htmlLocalizer["Display"]</label>
+                                <select id="NoHeader" name="NoHeader" class="form-control">
+                                    <option value="0" selected>Full Page</option>
+                                    <option value="1">IFRAME</option>
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <label class="control-label" for="BodyBackground">Background color Hex</label>
+                                <input class="form-control" type="text" id="BodyBackground" name="BodyBackground" value="#f8f9fa">
+                            </div>
+                            <div class="col-4">
+                                <label class="control-label" for="PrimaryColor">Primary Color Hex</label>
+                                <input class="form-control" type="text" id="PrimaryColor" name="PrimaryColor" value="#007bff">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label class="control-label">Disable Credit Card</label>
+                            <input type="checkbox" name="Tc" value="false">
+                        </div>
+                        <div class="col-4">
+                            <label class="control-label">Disable Ach</label>
+                            <input type="checkbox" name="Ach" value="false">
+                        </div>
+                        <div class="col-4">
+                            <label class="control-label">Disable Boton Popular</label>
+                            <input type="checkbox" name="BtnPopular" value="false">
+                        </div>
+                        <div class="col-4">
+                            <label class="control-label">Disable Boton Bhd</label>
+                            <input type="checkbox" name="BtnBhd" value="false">
+                        </div>
+                        <div class="col-4">
+                            <label class="control-label">Disable Wallet</label>
+                            <input type="checkbox" name="ShowWallet" value="false">
+                        </div>
+                        <div class="col-4">
+                            <label class="control-label">Disable Payment Options</label>
+                            <input type="checkbox" name="ShowPaymentOptions" value="false">
+                        </div>
+                        <div class="col-6">
+                            <label>Requires Customer Address</label>
+                            <input type="checkbox" name="RequiresAddress" value="true" />
+                        </div>
+                    </div>
+                    <div class="form-row mt-3">
+                        <div class="col-offset-2 col-12">
+
+                            <input class="btn btn-sm btn-info" type="submit" id="PaymentBtn" value="Send Payment" formmethod="post" asp-route-culture="@culture.Name" />
+                            <input class="btn btn-sm btn-info" type="submit" Id="RegisterBtn" value="Register Card" formmethod="post" />
+                            <input class="btn btn-sm btn-info" type="submit" Id="JwtBtn" value="Check Jwt" />
+                            <a class="btn btn-sm btn-warning" asp-page="index" asp-route-culture="es-US">@htmlLocalizer["Spanish"] es-US</a>
+                            <a class="btn btn-sm btn-warning" asp-page="index" asp-route-culture="en-US">@htmlLocalizer["English"] en-US</a>
+                        </div>
+                    </div>
+                    <div>
+                        <label>OAuth JWT token</label>
+                        <textarea id="token" name="token" rows="4" class="form-control"></textarea>
+                    </div>
+
+
+
+                </form>
+                <form id="errorForm" asp-page="/Index" asp-route-culture="@culture.Name" method="post">
+                </form>
+
+                <div class="text-left row border rounded border-secondary mt-5">
+                    <div class="col">
+                        <p class="my-2">
+                            @htmlLocalizer["Culture"] : @culture.DisplayName {@culture.Name}
+                        </p>
+                        <p class="my-2">
+                            @htmlLocalizer["Date"] : @DateTime.Now.ToLongDateString()
+                        </p>
+                    </div>
+                    <div class="col">
+                        <p class="my-2">
+                            @htmlLocalizer["Currency"]	: @(12345.00.ToString("c"))
+                        </p>
+                        <p class="my-2">
+                            @htmlLocalizer["Number"] : @(123.45m.ToString("F2"))
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-5 text-center mb-auto mt-5 container-info">
-                <div class="form-group">
-                    <h5 for="result h3">Json Request</h5>
-                    <textarea class="form-control smaller" id="result" rows="40"></textarea>
-                </div>
-            </div>
-            <div class="result-frame" style="display: none; width: 100%">
-
-                <h5> Message</h5>
-                <textarea class="form-control" id="message" rows="5"></textarea>
-
-                <iframe id="agilpay_frame" name="agilpay_frame" style="width: 100%; overflow: hidden; border: none;" height="623" scrolling="no"></iframe>
-
-            </div>
-            <div>
-                <small><a href="~/IndexV59">v59 index</a></small>
+        </div>
+        <div class="col-md-5 text-center mb-auto mt-5 container-info">
+            <div class="form-group">
+                <h5 for="result h3">HTTPS POST Request</h5>
+                <textarea class="form-control smaller" id="result" rows="40"></textarea>
             </div>
         </div>
-    }
-    else
-    {
-        <div class="jumbotron" style="background-color: white;">
-            <a class="logo-dark" href="https://agilisa.com/" title="Agilisa Technologies" rel="home"><img style="width: 300px;" src="https://1k8wd3h7z7q8u0yu2uu7g5bt-wpengine.netdna-ssl.com/wp-content/uploads/2020/11/Agilisa-Logo-VH-2-2020-01.jpg" alt="Logo Dark"></a>
-            <p class="lead">AgilPay is a secure high performance Payment Gateway powering agile business on a connected world </p>
-            <p><a href="https://www.dynamicspayments.com/" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <h2>Getting started</h2>
-                <p>We bring together everything that’s required to build websites and apps that accept payments and send payouts globally</p>
-            </div>
-            <div class="col-md-4">
-                <h2>Get more options</h2>
-                <p>We’ve made selling online easy so you can grow your business</p>
-            </div>
-            <div class="col-md-4">
-                <h2>Payments Processing</h2>
-                <p>Accept international transactions from customers worldwide.</p>
-            </div>
-        </div>
+        <div class="result-frame" style="display: none; width: 100%">
 
-    }
+            <h5> Message</h5>
+            <textarea class="form-control" id="message" rows="5"></textarea>
+
+            <iframe id="agilpay_frame" name="agilpay_frame" style="width: 100%; overflow: hidden; border: none;" height="623" scrolling="no"></iframe>
+
+        </div>
+        <div>
+            <small><a href="~/IndexV59">v59 index</a></small>
+        </div>
+    </div>
 
 </div>
 
@@ -284,7 +249,7 @@
             }
 
             var pretty = JSON.stringify(jsonObject, undefined, 4);
-            document.getElementById('result').value = pretty;
+            document.getElementById('result').value = pretty.slice(1, -1);
         }
 
         (function () {
@@ -328,10 +293,6 @@
 
         JwtBtn.addEventListener("click", () => action = "Jwt");
 
-        function testErrorPage(b) {
-            document.getElementById("errorForm").submit();
-        }
-
         // this should be done on server because #Key is a secret value
         function GenerateToken(event) {
             event.preventDefault();
@@ -341,7 +302,7 @@
             var pathName = window.location.pathname === "/" ? "" : window.location.pathname;
             var aux = pathName.charAt(pathName.length - 1) === "/" ? pathName.slice(0, -1) : pathName;
 
-            var url = $('#webApiUrl').val() + "/oauth/paymenttoken";
+            var url = "oauth/paymenttoken";
             var webpayURL = $("#webPayUrl").val();
 
             console.log(url)
@@ -354,9 +315,10 @@
             var orderId = jsonObject.Payments[0].Service;
             var amountOrder = jsonObject.Payments[0].Amount;
 
+            // get JWT Token from backend
             $.ajax(url, {
                 method: 'POST',
-                data: JSON.stringify({ client_id: clientId, client_secret: clientKey, customerid: userId, orderid: orderId, amount: amountOrder }),
+                data: JSON.stringify({ customerid: userId, orderid: orderId, amount: amountOrder }),
                 dataType: 'json',
                 contentType: 'application/json',
                 success: function (token) {
@@ -367,8 +329,8 @@
 
                     if (action === "P") {
                         $("#EntryPoint").off('submit', GenerateToken);
-                        var url=webpayURL + "/Payment";
-                        $('#EntryPoint').attr('action', url) ;
+                        var url = webpayURL + "/Payment";
+                        $('#EntryPoint').attr('action', url);
                         $('#EntryPoint').submit();
                     }
                     else if (action === "R") {
@@ -402,9 +364,9 @@
 
         function showLoading(show = false) {
             if (show) {
-
+                // get events
             } else {
-
+                // get events
             }
         }
 

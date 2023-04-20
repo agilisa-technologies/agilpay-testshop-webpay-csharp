@@ -53,11 +53,9 @@ namespace Test_Shop1
 
 
             services.AddRazorPages().AddRazorRuntimeCompilation();
-
-            services.AddMvc();
+            services.AddControllers();
             services.AddMvc().AddViewLocalization();
             services.AddLocalization(options => options.ResourcesPath = "Resources");
-            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -84,6 +82,8 @@ namespace Test_Shop1
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllerRoute("default", "{controller}/{action=Index}");
+                endpoints.MapControllers();
             });
         }
     }

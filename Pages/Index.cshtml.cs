@@ -6,19 +6,14 @@ namespace Test_Shop1.Pages
 {
     public class IndexModel : PageModel
     {
-        public bool ShowTestPage { get; set; }
-        public string ApaymentWebApiUrl { get; set; }
-        public string ApaymentWebPayUrl { get; set; }
+        public string Agilpay_WebPayUrl { get; set; }
 
         public IndexModel(IConfiguration configuration) : base() {
-            ApaymentWebApiUrl = configuration["AppSettings:ApaymentWebApiUrl"];
-            ApaymentWebPayUrl = configuration["AppSettings:ApaymentWebPayUrl"];
+            Agilpay_WebPayUrl = configuration["AppSettings:Agilpay_WebPayUrl"];
         }
 
         public IActionResult OnGet()
         {
-            ShowTestPage = true;
-
             return Page();
         }
         public IActionResult OnPost()
