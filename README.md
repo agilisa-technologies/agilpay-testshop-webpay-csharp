@@ -8,6 +8,8 @@ The steps performed by the example are as follows
 2. Prepare the payment form that will be sent to the WebPay module including the JWT token as a hidden field
 
 The payment shows depending on the parameters sent
+refer todetailed  documentation at: https://agilisa.atlassian.net/l/cp/sqhZebnK
+
 ![Payment Page](Payment_Page.png)
 
 ## JWT Validation token
