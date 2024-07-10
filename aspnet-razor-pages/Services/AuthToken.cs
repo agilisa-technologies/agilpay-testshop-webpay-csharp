@@ -22,8 +22,11 @@ namespace Test_Shop1.Services
         public  async Task<TokenResponse> GetJwtToken(PaymentTokenRequestModel model)
         {
             // override credentials
-            model.client_id = Client_id;
-            model.client_secret = Client_Secret;
+            if (model.client_id == null || model.client_secret == null)
+            {
+                model.client_id = Client_id;
+                model.client_secret = Client_Secret;
+            }
 
             TokenResponse response = null;
             try

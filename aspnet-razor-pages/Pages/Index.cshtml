@@ -55,6 +55,10 @@
                             <input id="SiteID" name="SiteID" class="form-control" type="text" value="API-001" />
                         </div>
                         <div class="col-6">
+                            <label class="control-label" for="SiteID">Secret</label>
+                            <input id="Key" name="Key" class="form-control" type="text" value="Dynapay" />
+                        </div>
+                        <div class="col-6">
                             <label class="control-label" for="UserID">UserID</label>
                             <input name="UserID" id="UserID" type="text" value="User-47748" class="form-control text-box single-line"
                                    data-val="true" data-val-length="El campo IDUsuario debe contener 50 o menos caracteres" data-val-length-max="50" data-val-required="The UserID field is required." />
@@ -88,7 +92,7 @@
                                   data-valmsg-for="Identification" data-valmsg-replace="true"></span>
                         </div>
 
-                        <div class="col">
+                        <div class="col-6">
                             <label class="control-label" for="ReturnURL">ReturnURL (back)</label>
                             <input name="ReturnURL" type="text" value="@urlBack" class="form-control text-box single-line"
                                    data-val="true" data-val-length="The field ReturnURL must be a string with a maximum length of 200." data-val-length-max="200" data-val-required="The ReturnURL field is required." id="ReturnURL" />
@@ -100,6 +104,11 @@
                             <input id="SuccessURL" name="SuccessURL" type="text" value="@url" class="form-control text-box single-line"
                                    data-val="true" data-val-length="The field SuccessURL must be a string with a maximum length of 200." data-val-length-max="200" />
                             <span class="field-validation-valid text-danger" data-valmsg-for="SuccessURL" data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="col-6">
+                            <label class="control-label" for="Detail">Pay2Link Invoice</label>
+                            <input id="Pay2Link_InvoiceKey" name="Pay2Link_InvoiceKey" type="text" value="" class="form-control text-box single-line"
+                                   data-val="true" />
                         </div>
                     </div>
                     <div class="form-row">
@@ -318,7 +327,7 @@
             // get JWT Token from backend
             $.ajax(url, {
                 method: 'POST',
-                data: JSON.stringify({ customerid: userId, orderid: orderId, amount: amountOrder }),
+                data: JSON.stringify({ client_id: clientId, client_secret: clientKey, customerid: userId, orderid: orderId, amount: amountOrder }),
                 dataType: 'json',
                 contentType: 'application/json',
                 success: function (token) {
