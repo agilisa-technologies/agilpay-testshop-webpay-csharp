@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 
-namespace Test_Shop1.Pages
+namespace Test_Shop_Razor.Pages
 {
     [IgnoreAntiforgeryToken(Order = 1001)]
     public class SuccessModel : PageModel

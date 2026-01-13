@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Localization;
 using System.Reflection;
-using Test_Shop1.Resources;
+using Test_Shop_Razor.Resources;
 
-namespace Test_Shop1.Services
+namespace Test_Shop_Razor.Services
 {
     public class CommonLocalizationService
     {

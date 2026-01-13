@@ -1,30 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
-using Test_Shop1.Models;
-using Test_Shop1.Services;
+using Test_Shop_Razor.Models;
+using Test_Shop_Razor.Services;
 
-namespace Test_Shop1.Controllers
+namespace Test_Shop_Razor.Controllers
 {
     [Route("[controller]/[action]")]
     [ApiController]
     public class OAuthController : ControllerBase
     {
-        private  IConfiguration Config { get; set; }
+        private readonly AuthToken _authService;
 
-        public OAuthController(IConfiguration configuration) : base()
+        public OAuthController(AuthToken authService)
         {
-            Config = configuration;
+            _authService = authService;
         }
 
         [HttpPost]
         public async Task<TokenResponse> PaymentTokenAsync(PaymentTokenRequestModel model)
         {
-            var _authService = new AuthToken(Config);
             TokenResponse response = await _authService.GetJwtToken(model);
             return response;
         }
-
-
     }
 }

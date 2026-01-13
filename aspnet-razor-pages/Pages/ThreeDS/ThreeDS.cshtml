@@ -1,0 +1,90 @@
+﻿@page
+@model Test_Shop_Razor.Pages.ThreeDSModel
+@{
+}
+<div class="your-page-content">
+    <h2>Informacion de Pago</h2>
+    <form id="billing-form" action="" method="post">
+        <!--Add the data-threeds="" DOM elements tags in your payment form-->
+        <div>
+            <label>Amount</label>
+            <input type="text" name="amount" value="10" data-threeds="amount" />
+        </div>
+        <div>
+            <label>Card No.</label>
+            <input type="text" name="pan" value="" data-threeds="pan" />
+        </div>
+        <div>
+            <label>Card Expiration Month</label>
+            <input type="text" name="month" value="" data-threeds="month" />
+        </div>
+        <div>
+            <label>Card Expiration Year</label>
+            <input type="text" name="year" value="" data-threeds="year" />
+        </div>
+        <button>Submit</button>
+    </form>
+
+    <span id="threeds-result"></span>
+    <div class="modal fade" id="threeds-modal" tabindex="-1" role="dialog" aria-labelledby="threeds-modal-label" aria-hidden="true" style="width:100%;height:100%;display:none;margin:0;padding:0; border:none;">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="threeds-modal-label">Validación de Tarjeta</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe id="uniqueThreeDSiframe" src=""></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End of page -->
+    <!-- Include the JS SDK library script -->
+    <script src="https://cdn.3dsintegrator.com/threeds.2.2.20231219.min.js"></script>
+    <script>
+         const tds = new ThreeDS( // Instantiate the ThreeDS class from the library
+           "billing-form", // Provide your form ID DOM element name
+           "c51e9ecd5a39f930d6cdaaeab0977563", // Provide your unique API key for your account
+           null, // Pass null to indicate the SDK to generate a JWT on our end, or pass your own
+           {
+           endpoint: "https://api-sandbox.3dsintegrator.com/v2.2",  // Point to sandbox environment during integration
+           autoSubmit: true, // This will trigger the authentication automatically when the required fields are completed
+           showChallenge: true, // It will display the prompt from the ACS in the case it gets challenged for the clients to complete what is asked from the ACS
+           iframeId: "uniqueThreeDSiframe",
+           forcedTimeOut: "10", // Amount of seconds that cancels the authentication if no response is received
+           resolve: handleThreeDSResponse,
+           reject: error => { // When the authentication fails because of a system error it will return the response and trigger this callback
+                console.log("Error message returned. Error:", error);
+                document.getElementById("threeds-result").innerHTML = '<div class="alert alert-danger">Autenticacion fallida... ' + error + '</div>';
+           },
+           verbose: true // Set verbose to true to help print all logs to help debug during integration
+         });
+
+         function handleThreeDSResponse(response) {
+             $(document.getElementById("threeds-modal")).modal("hide");
+             if (response.status == "Y") {
+                 console.log("Successful 3DS response returned. Response:", response);
+                 document.getElementById("threeds-result").innerHTML = '<div class="alert alert-success">Autenticacion exitosa...</div>';
+                 // codigo para someter el pago
+             } else {
+                 console.log("Declined 3DS response returned. Response:", response);
+                 document.getElementById("threeds-result").innerHTML = '<div class="alert alert-danger">Autenticacion fallida...</div>';
+             }
+         }
+
+         document.getElementById("uniqueThreeDSiframe").onload = function () {
+           $('#threeds-modal').modal('show');
+           // this.style.width = "100%";
+           // this.style.height = "100%";
+           // this.style.margin = "0";
+           // this.style.padding = "0";
+           // this.style.border = "none";
+        };
+    </script>
+</div>

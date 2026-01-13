@@ -1,4 +1,4 @@
-﻿namespace Test_Shop1.Models
+﻿namespace Test_Shop_Razor.Models
 {
     public class TokenResponse
     {

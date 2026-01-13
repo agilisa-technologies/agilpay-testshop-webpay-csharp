@@ -1,0 +1,42 @@
+﻿@page
+@model Test_Shop_Razor.Pages.ThreeDSMainModel
+@{
+    Layout = "_emptyLayout";
+}
+<div style="width:80%; margin:0 auto;">
+    <h2>Informacion de Pago (Main Page)</h2>
+
+    <div class="">Este formulario es para simular el proceso de autenticación 3DSecure.</div>
+
+    <form id="billing-form" action="/ThreeDS/ThreeDSIFrame" method="POST" target="uniqueThreeDSiframe" onsubmit="showIframe()">
+        <!-- Add the data-threeds="" DOM elements tags in your payment form-->
+        <div>
+            <label>Amount</label>
+            <input type="text" name="amount" value="10" data-threeds="amount" />
+        </div>
+        <div>
+            <label>Card No.</label>
+            <input type="text" name="pan" value="" data-threeds="pan" />
+        </div>
+        <div>
+            <label>Card Expiration Month</label>
+            <input type="text" name="month" value="" data-threeds="month" />
+        </div>
+        <div>
+            <label>Card Expiration Year</label>
+            <input type="text" name="year" value="" data-threeds="year" />
+        </div>
+        <div>
+            <label>Success Target URL (web)</label>
+            <input type="text" name="successUrl" value="/ThreeDS/ThreeDSResult" />
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <iframe id="uniqueThreeDSiframe" name="uniqueThreeDSiframe" src="" style="width:100%; height: 420px; display:none;"></iframe>
+    <!-- End of page -->
+    <script>
+        function showIframe() {
+            document.getElementById("uniqueThreeDSiframe").style.display = "block";
+        }
+    </script>
+</div>

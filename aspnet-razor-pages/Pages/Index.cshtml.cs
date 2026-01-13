@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 
-namespace Test_Shop1.Pages
+namespace Test_Shop_Razor.Pages
 {
     public class IndexModel : PageModel
     {

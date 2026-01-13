@@ -1,0 +1,119 @@
+﻿@page
+@model Test_Shop_Razor.Pages.ThreeDSIFrameModel
+@{
+    Layout = "_emptyLayout";
+}
+
+<form id="billing-form" method="post" style="display:none;">
+    <input type="hidden" name="amount" value="@Model.Amount" data-threeds="amount" />
+    <input type="hidden" name="pan" value="@Model.PAN" data-threeds="pan" />
+    <input type="hidden" name="month" value="@Model.ExpMonth" data-threeds="month" />
+    <input type="hidden" name="year" value="@Model.ExpYear" data-threeds="year" />
+    <button type="submit">Submit</button>
+</form>
+<span id="threeds-result" class="alert alert-info">Autenticando tarjeta...</span>
+<div class="modal fade" id="threeds-modal" tabindex="-1" role="dialog" aria-labelledby="threeds-modal-label" aria-hidden="true"
+     style="width:100%;height:100%;display:none;margin:0;padding:0; border:none;">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="threeds-modal-label">Validación de Tarjeta</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe id="uniqueThreeDSiframe" src=""></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End of page -->
+<!-- Include the JS SDK library script -->
+<script src="https://cdn.3dsintegrator.com/threeds.2.2.20231219.min.js"></script>
+<script>
+    const tds = new ThreeDS(
+        "billing-form",
+        "c51e9ecd5a39f930d6cdaaeab0977563",
+        null,
+        {
+            endpoint: "https://api-sandbox.3dsintegrator.com/v2.2",
+            autoSubmit: false,
+            showChallenge: true,
+            iframeId: "uniqueThreeDSiframe",
+            forcedTimeOut: "10",
+            resolve: handleResponse,
+            reject: handleError,
+            verbose: true
+        }
+    );
+
+    function submitForm() {
+        const amountDecimal = parseFloat(document.querySelector('input[name="amount"]').value);
+        tds.verify(
+            handleResponse,
+            handleError,
+            { amount: amountDecimal },
+            null,
+            null,
+            handleRebillResponse,
+            handleRebillError
+        );
+    }
+
+    function handleResponse(response) {
+        $('#threeds-modal').modal("hide");
+        const resultElement = document.getElementById("threeds-result");
+        if (response.status === "Y") {
+            console.log("Successful 3DS response returned. Response:", response);
+            resultElement.innerHTML = '<div class="alert alert-success">Autenticacion exitosa...</div>';
+            postMessageToParent(response);
+        } else {
+            console.log("Declined 3DS response returned. Response:", response);
+            resultElement.innerHTML = '<div class="alert alert-danger">Autenticacion fallida...</div>';
+        }
+    }
+
+    function postMessageToParent(response) {
+        if (window.ReactNativeWebView) {
+            window.ReactNativeWebView.postMessage(JSON.stringify(response));
+        } else if (window.self !== window.top) {
+            postResult(response);
+        }
+    }
+
+    function postResult(response) {
+        const form = document.createElement("form");
+        form.method = "post";
+        form.action = "@Model.TargetUrl";
+        form.target = "_top";
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "response";
+        input.value = JSON.stringify(response);
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+    document.getElementById("uniqueThreeDSiframe").onload = function () {
+        $('#threeds-modal').modal('show');
+    };
+
+    function handleError(error) {
+        console.log("Error message returned. Error:", error);
+    }
+
+    function handleRebillResponse(response) {
+        console.log("Verify method Rebill Resolve function called. Response:", response);
+    }
+
+    function handleRebillError(error) {
+        console.log("Verify method Rebill Reject function called. Error:", error);
+    }
+
+    setTimeout(submitForm, 2000);
+</script>

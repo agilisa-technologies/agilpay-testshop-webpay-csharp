@@ -1,0 +1,22 @@
+﻿@page
+@model Test_Shop_Razor.Pages.ThreeDSResultModel
+@{
+    Layout = "_emptyLayout";
+}
+
+@if (Model.Response != null)
+{
+    <div class="row" style="width: 70%;margin: 0 auto;">
+        <div class="alert alert-success col-12">Su tarjeta ha sido autenticada</div>
+        <div class="col-12">
+            <h3>Response Object:</h3>
+            <pre style="width:100%; border:1px solid #ccc">@Model.ResponseValue</pre>
+        </div>
+    </div>
+}
+else
+{
+    <div>
+        <h3>No response received.</h3>
+    </div>
+}

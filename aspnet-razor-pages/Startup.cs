@@ -5,9 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Globalization;
-using Test_Shop1.Services;
+using Test_Shop_Razor.Services;
 
-namespace Test_Shop1
+namespace Test_Shop_Razor
 {
     public class Startup
     {
@@ -44,6 +44,7 @@ namespace Test_Shop1
                 options.SupportedUICultures = supportedCultures;
             });
             services.AddSingleton<CommonLocalizationService>();
+            services.AddHttpClient<AuthToken>();
 
 
             services.AddRazorPages().AddRazorRuntimeCompilation();
@@ -66,7 +67,8 @@ namespace Test_Shop1
                 app.UseHsts();
             }
 
-            //app.UseHttpsRedirection();
+            // Enforce HTTPS redirection
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
